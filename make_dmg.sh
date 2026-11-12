@@ -8,7 +8,7 @@ VERSION="1.0"
 BUILD_DIR="build"
 APP_PATH="$BUILD_DIR/$APP_NAME.app"
 DIST_DIR="dist"
-DMG_PATH="$DIST_DIR/${APP_NAME}-${VERSION}.dmg"
+DMG_PATH="$DIST_DIR/azure-desktop-panel-${VERSION}.dmg"
 
 echo "==> 先构建 app"
 ./build.sh
