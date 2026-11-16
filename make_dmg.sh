@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 APP_NAME="azure桌面小板"
-VERSION="1.1"
+VERSION="1.2"
 BUILD_DIR=".build"
 APP_PATH="$BUILD_DIR/$APP_NAME.app"
 DIST_DIR="dist"

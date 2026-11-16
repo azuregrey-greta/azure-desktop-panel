@@ -12,8 +12,9 @@ mkdir -p "$APP_PATH/Contents/MacOS" "$APP_PATH/Contents/Resources"
 echo "==> 编译 Swift 源码"
 swiftc -O -o "$APP_PATH/Contents/MacOS/$EXEC_NAME" Sources/*.swift
 
-echo "==> 写入 Info.plist"
+echo "==> 写入 Info.plist 与图标"
 cp Resources/Info.plist "$APP_PATH/Contents/Info.plist"
+cp Resources/AppIcon.icns "$APP_PATH/Contents/Resources/AppIcon.icns"
 
 echo "==> 签名（ad-hoc）"
 codesign --force --sign - "$APP_PATH"
