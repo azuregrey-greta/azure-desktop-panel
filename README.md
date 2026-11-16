@@ -58,6 +58,21 @@ macOS 菜单栏草稿小面板：随手记，一键追加进系统「备忘录�
 
 以后更新代码后重新 `./build.sh --install` 一次即可，登录项无需重新配置。
 
+## 资源占用
+
+- 物理内存：约 21 MB（RSS 约 92 MB，含 AppKit/SwiftUI 共享框架）
+- 空闲 CPU：0 ~ 0.7%，3 个线程
+- app 体积：约 2.9 MB（其中图标约 2.4 MB）
+
+## 更换图标
+
+```bash
+swiftc -O tools/make_icon.swift -o /tmp/make_icon
+/tmp/make_icon 你的图片.png /tmp/AppIcon.iconset
+iconutil -c icns /tmp/AppIcon.iconset -o Resources/AppIcon.icns
+./build.sh --install
+```
+
 ## 草稿数据
 
 - 位置：`~/Library/Preferences/com.azure.smallpanel.plist`
