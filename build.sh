@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 APP_NAME="azure桌面小板"
 EXEC_NAME="azure-small-panel"
-BUILD_DIR="build"
+BUILD_DIR=".build"
 APP_PATH="$BUILD_DIR/$APP_NAME.app"
 
 mkdir -p "$APP_PATH/Contents/MacOS" "$APP_PATH/Contents/Resources"

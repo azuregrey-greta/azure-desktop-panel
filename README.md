@@ -21,11 +21,11 @@ macOS 菜单栏草稿小面板：随手记，一键追加进系统「备忘录�
 
 ```bash
 ./build.sh            # 只构建
-./build.sh --run      # 构建并启动（项目 build 目录版本）
+./build.sh --run      # 构建并启动（产物在隐藏目录 .build）
 ./build.sh --install  # 构建并安装到 /Applications 后启动（推荐，配合开机自启）
 ```
 
-产物在 `build/azure桌面小板.app`，建议拖进「应用程序」文件夹长期使用。
+产物在 `.build/azure桌面小板.app`，建议拖进「应用程序」文件夹长期使用。
 
 ## 打安装包（DMG）
 
