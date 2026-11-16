@@ -13,7 +13,7 @@ struct CalcTextView: NSViewRepresentable {
     }
 
     func makeNSView(context: Context) -> NSScrollView {
-        let tv = NSTextView()
+        let tv = PlainTextTextView()
         tv.delegate = context.coordinator
         tv.allowsUndo = true
         tv.drawsBackground = false
@@ -24,6 +24,12 @@ struct CalcTextView: NSViewRepresentable {
         tv.isVerticallyResizable = true
         tv.isHorizontallyResizable = false
         tv.autoresizingMask = [.width]
+
+        // OCR / 纯文本粘贴的临时状态 → 底部状态栏
+        let model = vm
+        tv.onTransientMessage = { message in
+            model.setOCRHint(message)
+        }
 
         tv.string = vm.text
         let initial = vm.text as NSString

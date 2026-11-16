@@ -18,6 +18,8 @@ final class PanelViewModel: ObservableObject {
     @Published private(set) var draftPending = false
     @Published private(set) var draftSavedAt: Date?
     @Published private(set) var suggestionVisible = false
+    /// 粘贴/OCR 的临时提示，2.5 秒后由输入框自动清空
+    @Published private(set) var ocrHint: String?
     @Published private(set) var launchAtLogin: Bool
 
     /// 保存成功后面板自动收起的回调，由 PanelController 注入
@@ -39,6 +41,11 @@ final class PanelViewModel: ObservableObject {
     func setSuggestionVisible(_ visible: Bool) {
         guard suggestionVisible != visible else { return }
         suggestionVisible = visible
+    }
+
+    func setOCRHint(_ message: String?) {
+        guard ocrHint != message else { return }
+        ocrHint = message
     }
 
     /// 防抖 0.5 秒后把输入写入 UserDefaults
@@ -203,6 +210,9 @@ struct PanelContentView: View {
             case .failure(let message):
                 return ("保存失败：\(message)（草稿已保留）", .red)
             case .idle:
+                if let hint = vm.ocrHint {
+                    return (hint, .secondary)
+                }
                 if vm.suggestionVisible {
                     return ("↩ 回车固定答案", .secondary)
                 }
